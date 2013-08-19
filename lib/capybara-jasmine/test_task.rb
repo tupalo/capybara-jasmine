@@ -23,7 +23,10 @@ class Capybara::Jasmine::TestTask
       end
     end
   end
-
+  
+  def colorize(output)
+    output.gsub(/\./, "\e[32m.\e[0m").gsub(/F/, "\e[31mF\e[0m")
+  end
 
   class Runner
     def initialize(files)
@@ -63,11 +66,6 @@ class Capybara::Jasmine::TestTask
 
     def script_tag(file)
       %{<script src="#{file}"></script>}
-    end
-    
-    def colorize(output)
-      output.gsub!(/\./, "\e[32mF\e[0m")
-      output.gsub!(/\F/, "\e[31mF\e[0m")
     end
   end
 end
