@@ -16,10 +16,10 @@ class Capybara::Jasmine::TestTask
       success = evaluate_script("window.reporter.clean")
       output = CGI.unescape evaluate_script("window.reporter.output")
       if !success
-        $stderr.puts output
+        $stderr.puts colorize(output)
         exit(1)
       else
-        $stdout.puts output
+        $stdout.puts colorize(output)
       end
     end
   end
@@ -63,6 +63,11 @@ class Capybara::Jasmine::TestTask
 
     def script_tag(file)
       %{<script src="#{file}"></script>}
+    end
+    
+    def colorize(output)
+      output.gsub!(/\./, "\e[32mF\e[0m")
+      output.gsub!(/\F/, "\e[31mF\e[0m")
     end
   end
 end
