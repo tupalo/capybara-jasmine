@@ -25,7 +25,7 @@ class Capybara::Jasmine::TestTask
   end
   
   def colorize(output)
-    output.gsub(/\./, "\e[32m.\e[0m").gsub(/F/, "\e[31mF\e[0m")
+    output.gsub(/\./, "\e[32m.\e[0m").gsub(/_F/, "\e[31mF\e[0m")
   end
 
   class Runner
