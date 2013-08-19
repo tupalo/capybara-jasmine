@@ -13,5 +13,5 @@ Gem::Specification.new do |gem|
   gem.name          = "capybara-jasmine"
   gem.require_paths = ["lib"]
   gem.version       = "0.1.0"
-  gem.add_dependency 'capybara', '~> 2.0'
+  gem.add_dependency 'capybara', '~> 1.0'
 end
